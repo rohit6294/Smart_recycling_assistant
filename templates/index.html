@@ -369,7 +369,7 @@
 
             <div id="ytSuggestions" class="creativity-section" hidden>
                 <h3>Youtube links</h3>
-                <ul id="suggestionList"></ul>
+                <ul id="ytList"></ul>
             </div>
 
             <!-- Bin Section -->
@@ -575,11 +575,16 @@
 
                         if (data.links) { // Use 'data.links' to access the links
                             const links = data.links.split('\n');
-                            suggestionList.innerHTML = '';
+                            ytList.innerHTML = '';
                             links.forEach(link => {
                                 const li = document.createElement('li');
-                                li.textContent = link;
-                                suggestionList.appendChild(li);
+                                const a = document.createElement('a'); // Create an anchor element
+                                a.href = link; // Set the href to the link
+                                a.textContent = link; // Set the link text
+                                a.target = '_blank'; // Open in a new tab
+                                a.rel = 'noopener noreferrer'; // Add security attributes
+                                li.appendChild(a); // Append the anchor to the list item
+                                ytList.appendChild(li); // Append the list item to the list
                             });
                             creativitySuggestions.setAttribute('hidden', '');
                             ytSuggestions.removeAttribute('hidden');
