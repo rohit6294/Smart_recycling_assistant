@@ -12,6 +12,15 @@
 
 <body>
     <div class="container">
+        <div id="popupTip" class="tip-container hidden">
+            <div class="tip-header">
+                🌟 Environmental Tip of the Day!
+                <button id="closeTip" class="close-tip-button">&times;</button>
+            </div>
+            <p id="tipText" class="tip-content">Loading...</p>
+        </div>
+        
+
         <header>
             <h1>AI Image Classifier</h1>
             <p>Upload an image to classify its category with AI-powered predictions!</p>
@@ -83,11 +92,12 @@
                     <p>Food Waste Bin</p>
                 </div>
             </div>
-            
+
 
 
             <script src="./static/script.js"></script>
             <script src="./static/script2.js"></script>
+            <script src="./static/tips.js"></script>
 
 
 </body>

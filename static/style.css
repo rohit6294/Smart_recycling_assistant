@@ -265,6 +265,77 @@ header p {
     display: none !important;
 }
 
+/* tips section */
+/* Enhanced Tip Section Styling */
+.tip-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #32cd32, #00aaff);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    width: 60%;
+    max-width: 600px;
+    z-index: 1000;
+    animation: fadeInSlideDown 0.8s ease-out;
+}
+
+/* Tip Header */
+.tip-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* Close Button Styling */
+.close-tip-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-tip-button:hover {
+    color: #ff4c4c;
+}
+
+/* Tip Content */
+.tip-content {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Animation for Tip Section */
+@keyframes fadeInSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(-50%);
+    }
+}
+
+/* Hiding the Tip */
+.hidden {
+    display: none !important;
+}
+
+
+  
 
 
 
