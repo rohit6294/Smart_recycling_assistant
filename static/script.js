@@ -47,6 +47,7 @@ function displayPrediction(data) {
 
     // Display the prediction result
     predictionResult.textContent = data.result;
+    document.getElementById("feedback").hidden = false;
 
     // Show the correct bin section based on the prediction
     binContainer.removeAttribute('hidden');

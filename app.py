@@ -15,12 +15,20 @@ data_cat = ['battery', 'cardboard', 'food_waste', 'glass', 'metal', 'paper', 'pl
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
+#directory to save wrong prediction images
+WRONG_FOLDER = 'feedback_data\wrong_predictions'
+os.makedirs(WRONG_FOLDER, exist_ok=True)
+
 img_height = 180
 img_width = 180
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -80,6 +88,21 @@ def ytsuggestions():
         return jsonify({'error': 'Failed to generate YouTube links'}), 500
 
     return jsonify({'links': output})
+
+
+@app.route('/feedback2', methods=['POST'])
+def feedback2():
+    try:
+        file = request.files.get('file')
+        if file:
+            filepath = os.path.join(WRONG_FOLDER, file.filename)
+            file.save(filepath)
+            return jsonify({'message': 'Thank you for your feedback!'}), 200
+        else:
+            return jsonify({'message': 'No file uploaded!'}), 400
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500  # Send the error as JSON
+
 
 if __name__ == '__main__':
     app.run(debug=True)
