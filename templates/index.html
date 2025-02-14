@@ -11,21 +11,25 @@
 </head>
 
 <body>
-    <div class="container">
-        <div id="popupTip" class="tip-container hidden">
+    <!-- Main container -->
+    <div class="container" >
+
+        <!-- Environmental Tip Popup -->
+        <div id="popupTip" class="tip-container hidden" >
             <div class="tip-header">
                 🌟 Environmental Tip of the Day!
                 <button id="closeTip" class="close-tip-button">&times;</button>
             </div>
             <p id="tipText" class="tip-content">Loading...</p>
         </div>
-        
 
+        <!-- Header Section -->
         <header>
             <h1>AI Image Classifier</h1>
             <p>Upload an image to classify its category with AI-powered predictions!</p>
         </header>
 
+        <!-- Image Upload Section -->
         <section class="upload-section">
             <img id="imagePreview" class="preview-image" src="" alt="Preview" style="display:none;">
             <form id="uploadForm" enctype="multipart/form-data">
@@ -46,13 +50,15 @@
                 <button id="predictCamera" class="camera-button" style="display:none;">Predict from Camera</button>
             </div>
         </section>
-        <!-- Floating button to open the map -->
-        <div id="floatingMapContainer">
+
+        <!-- Map Container -->
+        <div id="floatingMapContainer" hidden>
             <button id="toggleMapBtn" class="floating-button">📍</button>
             <div id="floatingMap" class="hidden">
                 <div id="map" style="height: 300px; width: 300px;"></div>
             </div>
         </div>
+
         <!-- Prediction Result Section -->
         <section class="result-section" id="resm" hidden>
             <h2>Prediction Result</h2>
@@ -64,11 +70,13 @@
             <button id="creativity" type="button" class="submit-button">Want to do any creativity?</button>
             <button id="ytlink" type="button" class="submit-button" hidden>art and craft youtube links</button>
 
+            <!-- Creativity Suggestions -->
             <div id="creativitySuggestions" class="creativity-section" hidden>
                 <h3>Creative Ideas for Reuse</h3>
                 <ul id="suggestionList"></ul>
             </div>
 
+            <!-- YouTube Links -->
             <div id="ytSuggestions" class="creativity-section" hidden>
                 <h3>Youtube links</h3>
                 <ul id="ytList"></ul>
@@ -92,22 +100,23 @@
                     <p>Food Waste Bin</p>
                 </div>
             </div>
-            <!-- feedback section -->
+
+            <!-- Feedback Section -->
             <section class="feedback-section" id="feedback" hidden>
                 <h2>Was the prediction correct?</h2>
-                <button id="feedbackYes" class="feedback-button">Yes</button>
-                <button id="feedbackNo" class="feedback-button">No</button>
+                <button id="feedbackYes" class="feedback-button submit-button">Yes</button>
+                <button id="feedbackNo" class="feedback-button submit-button">No</button>
             </section>
-            
 
+        </section>
 
+        <!-- External Scripts -->
+        <script src="./static/script.js"></script>
+        <script src="./static/script2.js"></script>
+        <script src="./static/tips.js"></script>
+        <script src="./static/script3.js"></script>
 
-            <script src="./static/script.js"></script>
-            <script src="./static/script2.js"></script>
-            <script src="./static/tips.js"></script>
-            <script src="./static/script3.js"></script>
-
-
+    </div>
 </body>
 
 </html>
