@@ -4,18 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Classifier</title>
+    <title>Recycle Solution</title>
     <link rel="stylesheet" href="/static/style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAacPH2Oy7zjnfDsqsLQKENHr6j3NhGXVY&libraries=places">
     </script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <!-- Main container -->
-    <div class="container" >
-
+    <div class="container">
         <!-- Environmental Tip Popup -->
-        <div id="popupTip" class="tip-container hidden" >
+        <div id="popupTip" class="tip-container hidden">
             <div class="tip-header">
                 🌟 Environmental Tip of the Day!
                 <button id="closeTip" class="close-tip-button">&times;</button>
@@ -25,31 +28,58 @@
 
         <!-- Header Section -->
         <header>
-            <h1>AI Image Classifier</h1>
-            <p>Upload an image to classify its category with AI-powered predictions!</p>
+            <div class="logo-container">
+                <i class="fas fa-recycle logo-icon"></i>
+            </div>
+            <h1>Smart Recycling Assistant</h1>
+            <p>Experience the power of AI to solve daily problems, a standout feature of this revolutionary Recycling solution.</p>
+            <p id="userStats" style="display: none; font-weight: bold;"></p>
         </header>
+
+        <!-- Feature Sections -->
+        <div class="features-container">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Rapid product information</h3>
+                <p>Effortlessly capture your product and get the solution what you can do with your waste material.</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>Real-Time information</h3>
+                <p>Get the accurate solution on time what to do with your waste product.</p>
+            </div>
+        </div>
 
         <!-- Image Upload Section -->
         <section class="upload-section">
+            <h2><i class="fas fa-upload"></i> Upload Image</h2>
             <img id="imagePreview" class="preview-image" src="" alt="Preview" style="display:none;">
             <form id="uploadForm" enctype="multipart/form-data">
-                <label for="fileInput" class="upload-label">Choose an Image</label>
+                <label for="fileInput" class="upload-label"><i class="fas fa-image"></i> Choose an Image</label>
                 <input type="file" id="fileInput" name="file" accept="image/*" required>
-                <button type="submit" class="submit-button">Predict</button>
+                <button type="submit" class="submit-button"><i class="fas fa-search"></i> Predict</button>
             </form>
         </section>
 
         <!-- Camera Capture Section -->
         <section class="camera-section">
-            <h2>Or Capture Live Photo</h2>
-            <button id="startCamera" class="camera-button">Start Camera</button>
+            <h2><i class="fas fa-camera"></i> Or Capture Live Photo</h2>
+            <button id="startCamera" class="camera-button"><i class="fas fa-video"></i> Start Camera</button>
             <div class="camera-container">
                 <video id="video" width="300" height="200" autoplay style="display:none;"></video>
                 <canvas id="canvas" width="300" height="200" style="display:none;"></canvas>
-                <button id="capture" class="camera-button" style="display:none;">Capture Photo</button>
-                <button id="predictCamera" class="camera-button" style="display:none;">Predict from Camera</button>
+                <button id="capture" class="camera-button" style="display:none;"><i class="fas fa-camera"></i> Capture Photo</button>
+                <button id="predictCamera" class="camera-button" style="display:none;"><i class="fas fa-search"></i> Predict from Camera</button>
             </div>
         </section>
+
+        <!-- Search Bar -->
+        
 
         <!-- Map Container -->
         <div id="floatingMapContainer" hidden>
@@ -61,24 +91,24 @@
 
         <!-- Prediction Result Section -->
         <section class="result-section" id="resm" hidden>
-            <h2>Prediction Result</h2>
+            <h2><i class="fas fa-chart-pie"></i> Prediction Result</h2>
             <div id="resultContainer">
                 <img id="uploadedImage" src="" alt="Uploaded Image" style="display: none;">
                 <p id="predictionResult"></p>
             </div>
-            <button id="recycle" type="button" class="submit-button">Want to dump?</button>
-            <button id="creativity" type="button" class="submit-button">Want to do any creativity?</button>
-            <button id="ytlink" type="button" class="submit-button" hidden>art and craft youtube links</button>
+            <button id="recycle" type="button" class="submit-button"><i class="fas fa-trash-alt"></i> Want to dump?</button>
+            <button id="creativity" type="button" class="submit-button"><i class="fas fa-lightbulb"></i> Want to do any creativity?</button>
+            <button id="ytlink" type="button" class="submit-button" hidden><i class="fab fa-youtube"></i> Art and craft youtube links</button>
 
             <!-- Creativity Suggestions -->
             <div id="creativitySuggestions" class="creativity-section" hidden>
-                <h3>Creative Ideas for Reuse</h3>
+                <h3><i class="fas fa-palette"></i> Creative Ideas for Reuse</h3>
                 <ul id="suggestionList"></ul>
             </div>
 
             <!-- YouTube Links -->
             <div id="ytSuggestions" class="creativity-section" hidden>
-                <h3>Youtube links</h3>
+                <h3><i class="fab fa-youtube"></i> Youtube links</h3>
                 <ul id="ytList"></ul>
             </div>
 
@@ -103,12 +133,22 @@
 
             <!-- Feedback Section -->
             <section class="feedback-section" id="feedback" hidden>
-                <h2>Was the prediction correct?</h2>
-                <button id="feedbackYes" class="feedback-button submit-button">Yes</button>
-                <button id="feedbackNo" class="feedback-button submit-button">No</button>
+                <h2><i class="fas fa-thumbs-up"></i> Was the prediction correct?</h2>
+                <button id="feedbackYes" class="feedback-button submit-button"><i class="fas fa-check"></i> Yes</button>
+                <button id="feedbackNo" class="feedback-button submit-button"><i class="fas fa-times"></i> No</button>
             </section>
 
         </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 Recycle Solution. Helping the environment one item at a time.</p>
+            <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
 
         <!-- External Scripts -->
         <script src="./static/script.js"></script>
@@ -116,6 +156,15 @@
         <script src="./static/tips.js"></script>
         <script src="./static/script3.js"></script>
 
+    </div>
+    <div class="search-container">
+        <div class="search-bar">
+            <button class="search-icon-btn"><i class="fas fa-link"></i></button>
+            <button class="search-icon-btn"><i class="fas fa-camera"></i></button>
+            <input type="text" placeholder="Search...">
+            <button class="search-icon-btn"><i class="fas fa-microphone"></i></button>
+            <button class="search-icon-btn"><i class="fas fa-search"></i></button>
+        </div>
     </div>
 </body>
 

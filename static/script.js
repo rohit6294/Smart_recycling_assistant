@@ -207,3 +207,18 @@ ytlink.addEventListener('click', async () => {
         console.error("Error during YouTube link generation:", error); // Log error
     }
 });
+
+
+// Initialize item count from localStorage
+let itemCount = parseInt(localStorage.getItem('itemCount')) || 0;
+
+// Add recycling count logic to displayPrediction without modifying existing code
+const originalDisplayPrediction = displayPrediction;
+displayPrediction = function(data) {
+    originalDisplayPrediction(data); // Call the original function
+    itemCount++; // Increment count
+    localStorage.setItem('itemCount', itemCount); // Save to localStorage
+    const stats = document.getElementById('userStats');
+    stats.textContent = `You’ve sorted ${itemCount} items!`; // Display count
+    stats.style.display = 'block'; // Show stats
+};

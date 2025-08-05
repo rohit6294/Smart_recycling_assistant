@@ -19,7 +19,7 @@ UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Create directory if it doesn't exist
 
 # Directory to save incorrect prediction feedback images
-WRONG_FOLDER = 'feedback_data\wrong_predictions'
+WRONG_FOLDER = 'feedback_data'
 os.makedirs(WRONG_FOLDER, exist_ok=True)  # Create directory if it doesn't exist
 
 # Set image dimensions for model input
@@ -47,7 +47,7 @@ def predict():
 
     # Load and preprocess the image for the model
     image_load = tf.keras.utils.load_img(filepath, target_size=(img_height, img_width))  # Resize image
-    img_arr = tf.keras.utils.img_to_array(image_load)  # Convert image to array format
+    img_arr = tf.keras.utils.img_to_array(2)  # Convert image to array format
     img_bat = np.expand_dims(img_arr, axis=0)  # Add batch dimension for model compatibility
 
     # Perform prediction using the model
@@ -109,6 +109,9 @@ def feedback2():
             return jsonify({'message': 'No file uploaded!'}), 400  # Return error response
     except Exception as e:  # Handle any exceptions
         return jsonify({'error': str(e)}), 500  # Return error details as JSON
+    
+
+    
 
 # Run the Flask app in debug mode
 if __name__ == '__main__':
