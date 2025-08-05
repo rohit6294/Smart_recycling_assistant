@@ -23,7 +23,6 @@ An integrated AI-powered web application that classifies waste items and offers 
 | HTML/CSS   | Frontend |
 | JavaScript | Client-side interactions |
 | CNN        | Custom-trained model |
-| SQLite     | Lightweight DB for suggestions |
 | Jupyter Notebook | Model training & testing |
 
 ---
@@ -114,3 +113,4 @@ Accuracy Achieved: ~95% on validation set
 🌐 Multi-language support
 
 🗂️ Expand dataset with more categories
+
