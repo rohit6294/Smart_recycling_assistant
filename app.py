@@ -47,7 +47,7 @@ def predict():
 
     # Load and preprocess the image for the model
     image_load = tf.keras.utils.load_img(filepath, target_size=(img_height, img_width))  # Resize image
-    img_arr = tf.keras.utils.img_to_array(2)  # Convert image to array format
+    img_arr = tf.keras.utils.img_to_array(image_load)  # Convert image to array format
     img_bat = np.expand_dims(img_arr, axis=0)  # Add batch dimension for model compatibility
 
     # Perform prediction using the model
@@ -115,4 +115,5 @@ def feedback2():
 
 # Run the Flask app in debug mode
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
